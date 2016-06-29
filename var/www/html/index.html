@@ -12,14 +12,20 @@
       type: "GET",
       datatype: "html",
       success: function(response){
-        printableURL = "<a href='" + response + "'>You got a download! Click here to get the file!</a>"
+	  
+	    if (response.indexOf("NO DOWNLOAD FOR YOU") > -1){
+		  printableURL = "<div id=\"warning\">There is no file available for download just yet. Leave the page open or check back later!</div>"
+		} else {
+		  printableURL = "<a id=\"downloadURL\" href='" + response + "'>You have a download available! Click here to get the file!</a>"
+		}
         $("#FileURLResult").html(printableURL);
         console.log("FileURL read completed.");
       }
     });
   }
-
-  var t = setInterval(getURL,3000); // This makes the page request the URL every three seconds, in case of a deletion or other update.
+  
+  var t = getURL() // This is done to make sure the link shows up immediately on pageload, before commencing with the periodic update.
+  t = setInterval(getURL,3000); // This makes the page request the URL every three seconds, in case of a deletion or other update.
 
   }); //End all-encompassing document.ready block. Every element should be put in here to run once the page is loaded.
   </script>
@@ -33,6 +39,14 @@
 #FileURLResult {
   font-weight:bold;
   text-align:center;
+}
+
+#warning {
+  color:rgba(102, 0, 0, 1.0);
+}
+
+#downloadURL {
+  color:rgba(255, 117, 26, 1.0);
 }
   </style>
 
