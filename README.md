@@ -8,5 +8,14 @@ Using an AWS IoT button, you can generate a temporary presigned S3 URL for a tim
 
 Boto3.
 
-Naturally this will also require a triggering action to run (AWS IoT button is used for this project), and you will need to set up both a webserver for the webpage portion, as well as implement the iotdownloader.py script in AWS Lambda.
+Naturally this project will also require a triggering action to run (AWS IoT button, specifically), and you will need to set up both a webserver for the webpage portion, as well as implement the iotdownloader.py script in AWS Lambda.
 
+In short, the structure is:
+
+- Put all the contents of /var/www on a webserver running Apache.
+- Update the Python code in the Lambda folder to point to a bucket of your own and at least one file within it.
+- Put the Python code into Lambda by means of making a bundle.zip file that includes boto3. There are tutorials on how to do this. Make sure the handler is set to "iotdownloader.handler".
+- Naturally, make sure the Lambda function has an appropriate IAM role assigned to it that will allow reads and writes to the bucket of your choosing.
+- Set up your AWS IoT button to be the Event Source for the Lambda function, and you should be good to go.
+
+If that sounds like a lot of steps, it is if it's your first time using any of the above. But, I got mine running in under a half hour, for what that's worth.
