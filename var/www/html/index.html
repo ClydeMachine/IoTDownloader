@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>The Arbiter - You get one of two files to download, which will it be?</title>
+  <script src="http://code.jquery.com/jquery-2.0.3.js"></script>
+  <script>
+  $(document).ready(function(){
+
+  function getURL() {
+    $.ajax({
+      url: "../cgi-bin/pullFromS3.cgi",
+      type: "GET",
+      datatype: "html",
+      success: function(response){
+        printableURL = "<a href='" + response + "'>You got a download! Click here to get the file!</a>"
+        $("#FileURLResult").html(printableURL);
+        console.log("FileURL read completed.");
+      }
+    });
+  }
+
+  var t = setInterval(getURL,3000); // This makes the page request the URL every three seconds, in case of a deletion or other update.
+
+  }); //End all-encompassing document.ready block. Every element should be put in here to run once the page is loaded.
+  </script>
+  <style>
+
+#separator {
+  font-weight:bold;
+  text-align:center;
+}
+
+#FileURLResult {
+  font-weight:bold;
+  text-align:center;
+}
+  </style>
+
+ </head>
+ <body>
+  <section id="separator">Will you get a file? The below will have a URL if so! Otherwise, it may have a message from the server.</section>
+  <section id="separator">.......................................................................................<br /></section>
+  <section id="FileURLResult">..Please Wait..<br /></section>
+  <section id="separator">.......................................................................................<br /></section>
+  </section>
+ </body>
+</html>

@@ -1,6 +1,6 @@
 import boto3
 
-# This should be initiated via an IoT button -> Lambda!
+# This should be initiated via Lambda!
 
 def handler(event,context):
     s3client = boto3.client('s3')
