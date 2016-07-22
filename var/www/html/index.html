@@ -28,7 +28,7 @@
   }
   
   var t = getURL() // This is done to make sure the link shows up immediately on pageload, before commencing with the periodic update.
-  t = setInterval(getURL,3000); // This makes the page request the URL every three seconds, in case of a deletion or other update.
+  t = setInterval(getURL,1500); // This makes the page request the URL every three seconds, in case of a deletion or other update.
 
   }); //End all-encompassing document.ready block. Every element should be put in here to run once the page is loaded.
   </script>
