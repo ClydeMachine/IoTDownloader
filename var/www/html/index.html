@@ -13,14 +13,14 @@
       datatype: "html",
       success: function(response){
         if (response.indexOf("NO DOWNLOAD FOR YOU") > -1){
-  printableURL = "<div id=\"warning\">There is no file available for download just yet. Leave the page open or check back later!</div>"
-} else if (response.indexOf("1.mp3") > -1) {
-  printableURL = "<a id=\"downloadURL\" href='" + response + "'>The first song is available for download! Click here to get this song!</a>"
-} else if (response.indexOf("2.mp3") > -1) {
-  printableURL = "<a id=\"downloadURL\" href='" + response + "'>The second song is now available for download! Click to get it now!</a>"
-} else {
-  printableURL = "<a id=\"downloadURL\" href='" + response + "'>There is a file available for download! Click here to get the file!</a>"
-}
+          printableURL = "<div id=\"warning\">There is no file available for download just yet. Leave the page open or check back later!</div>"
+        } else if (response.indexOf("1.mp3") > -1) {
+          printableURL = "<a id=\"downloadURL\" href='" + response + "'>The first song is available for download! Click here to get this song!</a>"
+        } else if (response.indexOf("2.mp3") > -1) {
+          printableURL = "<a id=\"downloadURL\" href='" + response + "'>The second song is now available for download! Click to get it now!</a>"
+        } else {
+          printableURL = "<a id=\"downloadURL\" href='" + response + "'>There is a file available for download! Click here to get the file!</a>"
+        }
         $("#FileURLResult").html(printableURL);
         console.log("FileURL read completed.");
       }
