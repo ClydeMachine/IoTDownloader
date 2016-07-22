@@ -42,5 +42,5 @@ def handler(event,context):
 
 # Build into a bundle with:
 # zip -r bundle.zip iotdownloader.py !make sure you use "iotdownloader.handler" as the Lambda function handler!
-# zip -r9 bundle.zip lib/python2.7/site-packages/* !for external libraries
+# zip -r9 bundle.zip /usr/lib/python2.7/site-packages/* !for external libraries
 # Then upload to Lambda, run test, success.
