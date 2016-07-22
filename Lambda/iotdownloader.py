@@ -10,9 +10,10 @@ def handler(event,context):
     if(event['clickType']=='SINGLE'):
         signedUrl = s3client.generate_presigned_url(
             ClientMethod='get_object',
+            ExpiresIn='300',
             Params={
                 'Bucket': 'repoabr',
-                'Key': 'Totoro.png'
+                'Key': '1.mp3'
             }
         )
         object.put(Body=signedUrl)
@@ -20,9 +21,10 @@ def handler(event,context):
     if(event['clickType']=='DOUBLE'):
         signedUrl = s3client.generate_presigned_url(
             ClientMethod='get_object',
+            ExpiresIn='300',
             Params={
                 'Bucket': 'repoabr',
-                'Key': 'r4.jpg'
+                'Key': '2.mp3'
             }
         )
         object.put(Body=signedUrl)
