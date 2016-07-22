@@ -1,5 +1,7 @@
 # IoTDownloader
 
+[![ScreenShot](http://i.imgur.com/gJeRBhU.png)](https://youtu.be/N_EoBP7sU2A)
+
 IoT-enabled download gate. 
 
 Using an AWS IoT button, you can generate a temporary presigned S3 URL for a time-locked exclusive download of one or two files you have in your S3 bucket. Singlepress the button to generate a URL for the first file, or doublepress for the second file, and longpress the button to remove the URL from the page altogether. Made primarily for musicians who want to offer an exclusive download of a song or album from S3, and be able to trigger this whenever while out and about (i.e. on stage at a show giving an exclusive download for attendees-only). 
