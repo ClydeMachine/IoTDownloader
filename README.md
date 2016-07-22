@@ -25,3 +25,9 @@ In short, the structure is:
 - Set up your AWS IoT button to be the Event Source for the Lambda function, and you should be good to go.
 
 If that sounds like a lot of steps, it is if it's your first time using any of the above. But, I got mine running in under a half hour, for what that's worth.
+
+# Credits
+
+- Kyle Roche of https://twitter.com/kylemroche for getting a button to me to make this happen after hearing my pitch.
+
+- Kevin Goering for the idea of it being a choose-your-song kind of download gate, rather than just a one-file download gate, fundamentally improving the concept behind this project.
