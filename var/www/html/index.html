@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
  <head>
-  <title>The Arbiter - You get one of two files to download, which will it be?</title>
+  <title>IoT-Enabled Download Gate</title>
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:600,400' rel='stylesheet' type='text/css'>
   <script src="http://code.jquery.com/jquery-2.0.3.js"></script>
   <script>
   $(document).ready(function(){
@@ -15,11 +16,11 @@
         if (response.indexOf("NO DOWNLOAD FOR YOU") > -1){
           printableURL = "<div id=\"warning\">There is no file available for download just yet. Leave the page open or check back later!</div>"
         } else if (response.indexOf("1.mp3") > -1) {
-          printableURL = "<a id=\"downloadURL\" href='" + response + "'>The first song is available for download! Click here to get this song!</a>"
+          printableURL = "<a id=\"downloadURL\" href='" + response + "' target=\"_blank\">The first song is available for download! Click here to get this song!</a>"
         } else if (response.indexOf("2.mp3") > -1) {
-          printableURL = "<a id=\"downloadURL\" href='" + response + "'>The second song is now available for download! Click to get it now!</a>"
+          printableURL = "<a id=\"downloadURL\" href='" + response + "' target=\"_blank\">The second song is now available for download! Click to get it now!</a>"
         } else {
-          printableURL = "<a id=\"downloadURL\" href='" + response + "'>There is a file available for download! Click here to get the file!</a>"
+          printableURL = "<a id=\"downloadURL\" href='" + response + "' target=\"_blank\">There is a file available for download! Click here to get the file!</a>"
         }
         $("#FileURLResult").html(printableURL);
         console.log("FileURL read completed.");
@@ -33,6 +34,27 @@
   }); //End all-encompassing document.ready block. Every element should be put in here to run once the page is loaded.
   </script>
   <style>
+  
+html {
+  height:100%;
+}
+  
+body {
+  height:100%;
+  margin:0;
+  background: rgba(255,255,255,1);
+  background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(252,214,138,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(252,214,138,1)));
+  background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(252,214,138,1) 100%);
+  background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(252,214,138,1) 100%);
+  background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(252,214,138,1) 100%);
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(252,214,138,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#fcd68a', GradientType=0 );
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  font-family: 'Titillium Web', Verdana, sans-serif;
+  font-size:36px;
+}
 
 #separator {
   font-weight:bold;
@@ -48,17 +70,44 @@
   color:rgba(102, 0, 0, 1.0);
 }
 
+#wrapper {
+  min-height:100%;
+  position:relative;
+}
+
 #downloadURL {
   color:rgba(255, 117, 26, 1.0);
+}
+
+#spacer {
+  display:block;
+  height:100%;
+}
+
+#footer {
+  position:absolute;
+  display:block;
+  text-align:center;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height:auto;
+  padding: 1rem;
 }
   </style>
 
  </head>
  <body>
-  <section id="separator">Will you get a file? The below will have a URL if so! Otherwise, it may have a message from the server.</section>
-  <section id="separator">.......................................................................................<br /></section>
-  <section id="FileURLResult">..Please Wait..<br /></section>
-  <section id="separator">.......................................................................................<br /></section>
-  </section>
+  <div id="wrapper">
+    <section id="separator"><br /></section>
+    <section id="separator">.......................................................................................<br /></section>
+    <section id="FileURLResult">..Please Wait..<br /></section>
+    <section id="separator">.......................................................................................<br /></section>
+    <section id="spacer"></section>
+    <section id="footer">
+      <img src="images/lambda-logo.png" /><br />
+      <img src="images/aws-logo.png" /> 
+    </section>
+  </div>
  </body>
 </html>
