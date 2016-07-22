@@ -2,12 +2,14 @@
 
 IoT-enabled download gate. 
 
-Using an AWS IoT button, you can generate a temporary presigned S3 URL for a time-locked exclusive download of ome or two files you have in your S3 bucket. Singlepress the button to generate a URL for the first file, or doublepress for the second file, and longpress the button to remove the URL. Made primarily for musicians who want to offer an exclusive download of a song or album from S3, and be able to trigger this while out and about (i.e. on stage at a show). 
+Using an AWS IoT button, you can generate a temporary presigned S3 URL for a time-locked exclusive download of one or two files you have in your S3 bucket. Singlepress the button to generate a URL for the first file, or doublepress for the second file, and longpress the button to remove the URL from the page altogether. Made primarily for musicians who want to offer an exclusive download of a song or album from S3, and be able to trigger this whenever while out and about (i.e. on stage at a show giving an exclusive download for attendees-only). 
 
 # Requirements
 
 -Python 2.7
+
 -Boto3
+
 -AWS account for Lambda function
 
 Naturally this project will also require a triggering action to run (AWS IoT button, specifically), and you will need to set up both a webserver for the webpage portion, as well as implement the iotdownloader.py script in AWS Lambda.
